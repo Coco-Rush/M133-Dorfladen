@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Document-pemis</title>
     <script src="app.js" type="module"></script>
     <script type="module" defer>
         import { init } from "./lib/templating.js";
@@ -12,10 +12,12 @@
     </script>
 </head>
 <body>
+    RAAAAAAIR
     <ul>
         <template data-template-foreach="loadList" data-template-let="items">
             <li>
-                <h3>{{ items.beschreibung}}</h3>
+                
+                <h3>{{items.beschreibung}} </h3>
                 <button>test</button>
                 <script type="module">
                     import { append } from "./lib/templating.js";

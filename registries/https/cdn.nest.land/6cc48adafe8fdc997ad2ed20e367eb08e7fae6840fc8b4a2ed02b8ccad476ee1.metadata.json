@@ -1,17 +1,17 @@
 {
   "headers": {
-    "x-vercel-cache": "MISS",
-    "cache-control": "public, max-age=0, must-revalidate",
-    "location": "https://cdn-dev.nest.land/.well-known/deno-import-intellisense.json",
-    "server": "Vercel",
     "content-type": "application/json",
-    "date": "Fri, 14 Jan 2022 12:23:18 GMT",
-    "x-vercel-id": "fra1::gdrf6-1642162998771-3e014ae9e902",
-    "strict-transport-security": "max-age=63072000"
+    "cache-control": "public, max-age=0, must-revalidate",
+    "server": "Vercel",
+    "x-vercel-id": "fra1::kstjz-1642187761134-6e889c5e97d1",
+    "x-vercel-cache": "MISS",
+    "location": "https://cdn-dev.nest.land/.well-known/deno-import-intellisense.json",
+    "strict-transport-security": "max-age=63072000",
+    "date": "Fri, 14 Jan 2022 19:16:01 GMT"
   },
   "url": "https://cdn.nest.land/.well-known/deno-import-intellisense.json",
   "now": {
-    "secs_since_epoch": 1642162998,
-    "nanos_since_epoch": 725175400
+    "secs_since_epoch": 1642187761,
+    "nanos_since_epoch": 297432400
   }
 }
