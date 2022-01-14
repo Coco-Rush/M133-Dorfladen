@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "location": "https://cdn-dev.nest.land/.well-known/deno-import-intellisense.json",
+    "cache-control": "public, max-age=0, must-revalidate",
+    "strict-transport-security": "max-age=63072000",
+    "x-vercel-id": "fra1::qhgg4-1642162419647-829d02307450",
+    "server": "Vercel",
+    "content-type": "application/json",
+    "x-vercel-cache": "MISS",
+    "date": "Fri, 14 Jan 2022 12:13:39 GMT"
+  },
+  "url": "https://cdn.nest.land/.well-known/deno-import-intellisense.json",
+  "now": {
+    "secs_since_epoch": 1642162419,
+    "nanos_since_epoch": 589852500
+  }
+}
