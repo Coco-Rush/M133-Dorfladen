@@ -5,7 +5,7 @@ const itemList = JSON.parse(Deno.readTextFileSync(Deno.cwd()+"./assets/products.
 const router = new Router();
 //rair
 let itemscookie = 0;
-console.log("test-before-loop-")
+//console.log("test-before-loop-")  -->this works
 router.get("/", async (context) => {
     console.log("test-enter-router.get")
     try {
@@ -20,7 +20,7 @@ router.get("/", async (context) => {
         context.cookies.set("itemscookie", itemscookie);
 
         context.response.body = await renderFileToString(Deno.cwd() + 
-        "./Views/index.html", { itemList: itemList, itemscookie: itemscookie });
+        "./Views/index.ejs", { itemList: itemList, itemscookie: itemscookie });
         context.response.type = "html";
         //await include("Views/index.ejs")
     } catch (error) {
