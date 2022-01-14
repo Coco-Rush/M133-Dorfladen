@@ -3,7 +3,7 @@
 import { Application , Router, renderFileToString} from "./deps.js";
 const itemList = JSON.parse(Deno.readTextFileSync(Deno.cwd()+"./assets/products.json")); 
 const router = new Router();
-
+//rair
 let itemscookie = 0;
 console.log("test-before-loop-")
 router.get("/", async (context) => {

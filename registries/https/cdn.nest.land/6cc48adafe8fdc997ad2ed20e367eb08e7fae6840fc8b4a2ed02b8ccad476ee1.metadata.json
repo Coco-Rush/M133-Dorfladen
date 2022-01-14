@@ -1,17 +1,17 @@
 {
   "headers": {
+    "date": "Fri, 14 Jan 2022 22:21:58 GMT",
     "content-type": "application/json",
     "cache-control": "public, max-age=0, must-revalidate",
-    "server": "Vercel",
-    "x-vercel-id": "fra1::kstjz-1642187761134-6e889c5e97d1",
     "x-vercel-cache": "MISS",
-    "location": "https://cdn-dev.nest.land/.well-known/deno-import-intellisense.json",
+    "x-vercel-id": "fra1::w5kcq-1642198918661-dd9107233a6c",
+    "server": "Vercel",
     "strict-transport-security": "max-age=63072000",
-    "date": "Fri, 14 Jan 2022 19:16:01 GMT"
+    "location": "https://cdn-dev.nest.land/.well-known/deno-import-intellisense.json"
   },
   "url": "https://cdn.nest.land/.well-known/deno-import-intellisense.json",
   "now": {
-    "secs_since_epoch": 1642187761,
-    "nanos_since_epoch": 297432400
+    "secs_since_epoch": 1642198918,
+    "nanos_since_epoch": 757783300
   }
 }
