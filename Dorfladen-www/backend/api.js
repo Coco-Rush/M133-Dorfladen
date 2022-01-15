@@ -10,6 +10,7 @@ let list = [
 const router = new Router();
 
 router
+.get("/home", context => context.response.body = Deno.renderFiletoString(Deno.cwd() + "/Dorfladen-www/frontend/index.html"))
 .get("/api/list", context => context.response.body = list)
 .get("/api/id", context => context.response.body = v4.generate())
 .post("/api/list", async context => {
