@@ -1,6 +1,7 @@
 import {Application, Context, Router} from 'https://deno.land/x/oak@v6.3.1/mod.ts';
 import {renderFileToString} from "https://deno.land/x/dejs@0.9.3/mod.ts";
-import {Bookings} from "./bookingDb.js";
+
+
 const productlist = JSON.parse(Deno.readTextFileSync(Deno.cwd() + "/assets/products.json")); 
 
 const app = new Application();
@@ -13,12 +14,10 @@ router.get('/',async (ctx)=> {
     console.log(path_ejs);
     console.log(path_products);
     console.log(productlist);
-    console.log(Bookings);
 
     let body = await renderFileToString(path_ejs,
         {
-            headline:"Übersicht aller Gäste",
-            bookings:Bookings,
+            
             list:productlist
         }
     );
