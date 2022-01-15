@@ -5,17 +5,17 @@ const productlist = JSON.parse(Deno.readTextFileSync(Deno.cwd() + "/assets/produ
 
 const app = new Application();
 const router = new Router();
-console.log(productlist);
 
 router.get('/',async (ctx)=> {
 
-    let path = Deno.cwd() + "/index.ejs";
-    let pathlist = Deno.cwd() + "/assets/products.json";
-    console.log(path);
-    console.log(pathlist);
+    let path_ejs = Deno.cwd() + "/index.ejs";
+    let path_products = Deno.cwd() + "/assets/products.json";
+    console.log(path_ejs);
+    console.log(path_products);
+    console.log(productlist);
     console.log(Bookings);
 
-    let body = await renderFileToString(path,
+    let body = await renderFileToString(path_ejs,
         {
             headline:"Übersicht aller Gäste",
             bookings:Bookings,
@@ -24,7 +24,6 @@ router.get('/',async (ctx)=> {
     );
 
     ctx.response.body = body;
-
 });
 
 router.get('/bookings/:id',async (ctx)=> {
