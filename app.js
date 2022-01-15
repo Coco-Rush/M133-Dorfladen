@@ -1,19 +1,25 @@
 import {Application, Context, Router} from 'https://deno.land/x/oak@v6.3.1/mod.ts';
 import {renderFileToString} from "https://deno.land/x/dejs@0.9.3/mod.ts";
 import {Bookings} from "./bookingDb.js";
+const productlist = JSON.parse(Deno.readTextFileSync(Deno.cwd() + "/assets/products.json")); 
 
 const app = new Application();
 const router = new Router();
+console.log(productlist);
 
 router.get('/',async (ctx)=> {
 
     let path = Deno.cwd() + "/index.ejs";
+    let pathlist = Deno.cwd() + "/assets/products.json";
     console.log(path);
+    console.log(pathlist);
+    console.log(Bookings);
 
     let body = await renderFileToString(path,
         {
             headline:"Übersicht aller Gäste",
-            bookings:Bookings
+            bookings:Bookings,
+            list:productlist
         }
     );
 
