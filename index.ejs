@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2><%= headline %></h2>
+
+    <table>
+
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Surname
+            </th>
+            <th>
+                Roomnumber
+            </th>
+        </tr>
+
+        
+        <% for (let i=0; i<bookings.length; i++) { %>
+
+            <tr>
+
+                <td>
+                    <%= bookings[i].id %>
+                </td>
+
+                <td>
+                    <%= bookings[i].name %>
+                </td>
+
+                <td>
+                    <%= bookings[i].surname %>
+                </td>
+
+                <td>
+                    <%= bookings[i].roomNumber %>
+                </td>
+
+            </tr>
+
+        <% } %>
+
+
+    </table>
+
+</body>
+</html>

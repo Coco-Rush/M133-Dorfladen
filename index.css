@@ -1,0 +1,19 @@
+body {
+    background-color: #aef5f4;
+    font-family: Arial, sans-serif;
+    font-size:20px;
+}
+.container {
+    background-color: white;
+    height: 100vh;
+    text-align:justify;
+    padding-left:15%;
+    padding-right:15%;
+    padding-top:5%;
+}
+h2 {
+    font-size: 18px;
+}
+a, a:visited {
+    color: #555;
+}
