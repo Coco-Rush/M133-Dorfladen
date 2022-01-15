@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-reboot.css">
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1><%= title %> </h1>
+    <ul>
+        <li>
+           Id: <%= product.id %>
+        </li>
+        <li>
+           Produkt: <%= product.productName %>
+        </li>
+        <li>
+           <p style="font: red;">ANGEBOT!:<%= product.specialOffer %>Nur noch für 2 Tage!</p>
+        </li>
+        <li>
+           Normaler Preis: <del><%= product.normalPrice %></del>
+        </li>
+    </ul>
+    <%= product.description %>
+    <form action="/home" method="get">
+        <button style="float: left; border: solid black; margin: 5%;" type="button">Back to home</button>
+    </form> 
+
+</body>
+</html>

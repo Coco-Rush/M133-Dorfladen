@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-reboot.css">
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <fieldset>
+        <% for(let i=0;i<list.length;i++){ %><br><br>
+        <form action="/detail/<%= list[i].id %>" method="get">
+            <button style="float: left; border: solid black; margin: 5%;" type="submit">
+                <img src="..\assets\<%= list[i].imageName %>" width="150" height="150"><br>
+                <p><%= list[i].productName %></p><br><br>
+            </button>
+        </form>
+        <% } %> 
+    </fieldset>
+
+</body>
+</html>
