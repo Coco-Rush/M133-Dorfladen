@@ -8,7 +8,7 @@ const router = new Router();
 
 router.get('/',async (ctx)=> {
 
-    let path_ejs = Deno.cwd() + "/index.ejs";
+    let path_ejs = Deno.cwd() + "/Views/index.ejs";
     let path_products = Deno.cwd() + "/assets/products.json";
     console.log(path_ejs);
     console.log(path_products);
