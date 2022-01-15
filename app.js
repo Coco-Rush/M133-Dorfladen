@@ -1,6 +1,6 @@
 import {Application, Context, Router} from 'https://deno.land/x/oak@v6.3.1/mod.ts';
 import {renderFileToString} from "https://deno.land/x/dejs@0.9.3/mod.ts";
-
+import {Bookings} from "./bookingDb.js";
 
 const productlist = JSON.parse(Deno.readTextFileSync(Deno.cwd() + "/assets/products.json")); 
 
