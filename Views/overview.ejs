@@ -21,9 +21,7 @@
 </head>
 <body>
     <h1>Dorfladen BBZW</h1><br><br>
-    <form action="/shoppingCart" method="get">
-        <button style="border: solid black; margin: 5%;" type="submit">Hier zu Warenkorb</button>
-    </form><br>
+    <%- await include (Deno.cwd() + '/Views/shopCartBtn.ejs'); %>
         <div class="columns"class="container">
             <% for(let i=0;i<list.length;i++){ %><br><br>
                 <form action="/detail/<%= list[i].id %>" method="get">

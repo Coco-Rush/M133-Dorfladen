@@ -6,7 +6,8 @@
 <body>
     <% let path = Deno.cwd() + '/assets/' + product.imageName; %> 
     <% console.log(path) %> 
-    <h1><%= product.productName %> </h1><br><br>
+    <h1><%= product.productName %> </h1><br>
+    <%- await include (Deno.cwd() + '/Views/shopCartBtn.ejs'); %>
     <fieldset class="container">
         <br>
         <img src="<%= path %>" width="250" height="250"> 
