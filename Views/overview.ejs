@@ -21,7 +21,9 @@
                 <form action="/detail/<%= list[i].id %>" method="get">
                     <button type="submit">
                         <img src="/assets/<%= list[i].imageName %>" width="210" height="210"><br>
-                        <p><%= list[i].productName %></p><br><br>
+                        <p><%= list[i].productName %></p><br>
+                        <p style="text-align:left;">Normalpreis: <del><%= list[i].normalPrice %> CHF</del></p>
+                        <p style="text-align:left; color: red;">ANGEBOT: <%= list[i].specialOffer %>CHF</p><br>
                     </button>
                 </form>
                 <% } %> 
