@@ -25,7 +25,18 @@ router.get('/',async (ctx)=> {
 });
 
 router.get('/home', async (ctx) => {
-    ctx.response = redirect("http://localhost:8000");
+    let path = Deno.cwd() + "/Views/overview.ejs";
+    console.log(path);
+    console.log(path_products);
+    console.log(productlist);
+
+    let body = await renderFileToString(path,
+        {
+            list:productlist
+        }
+    );
+
+    ctx.response.body = body;
 });
 
 router.get('/detail/:id', async (ctx) => {

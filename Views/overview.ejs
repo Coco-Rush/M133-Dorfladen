@@ -6,18 +6,35 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap-reboot.css">
     <script src="bootstrap/js/bootstrap.js"></script>
     <title>Document</title>
+    <style>
+        .columns {
+            border: 1px black solid;
+            padding: 15px;
+            -webkit-column-count: 3;
+            -moz-column-count: 3;
+            column-count: 3;
+            -webkit-column-gap: 40px;
+            -moz-column-gap: 40px;
+            column-gap: 40px;
+            -webkit-column-rule: 1px solid lightgrey;
+            -moz-column-rule: 1px solid lightgrey;
+            column-rule: 1px solid lightgrey;
+        }
+    </style>
 </head>
 <body>
     
     <fieldset>
-        <% for(let i=0;i<list.length;i++){ %><br><br>
-        <form action="/detail/<%= list[i].id %>" method="get">
-            <button style="float: left; border: solid black; margin: 5%;" type="submit">
-                <img src="..\assets\<%= list[i].imageName %>" width="150" height="150"><br>
-                <p><%= list[i].productName %></p><br><br>
-            </button>
-        </form>
-        <% } %> 
+        <div class="columns">
+            <% for(let i=0;i<list.length;i++){ %><br><br>
+                <form action="/detail/<%= list[i].id %>" method="get">
+                    <button style="float: center; border: solid black; margin: 5%;" type="submit">
+                        <img src="\assets\<%= list[i].imageName %>" width="150" height="150"><br>
+                        <p><%= list[i].productName %></p><br><br>
+                    </button>
+                </form>
+                <% } %> 
+        </div>  
     </fieldset>
 
 </body>

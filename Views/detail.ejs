@@ -8,25 +8,24 @@
     <title>Document</title>
 </head>
 <body>
-    <h1><%= title %> </h1>
+    <h1><%= product.productName %> </h1><br><br>
+    <img src="/assets/<%= product.imageName %>" width="150" height="150">
     <ul>
-        <li>
-           Id: <%= product.id %>
-        </li>
         <li>
            Produkt: <%= product.productName %>
         </li>
         <li>
-           <p style="font: red;">ANGEBOT!:<%= product.specialOffer %>Nur noch für 2 Tage!</p>
+           <p style="font: bold;color:red;">ANGEBOT!: <%= product.specialOffer %>CHF --Nur noch für 2 Tage erhältlich!</p>
         </li>
         <li>
            Normaler Preis: <del><%= product.normalPrice %></del>
         </li>
+        <li>
+            <%= product.description %>
+        </li>
     </ul>
-    <%= product.description %>
-    <form action="/home" method="get">
-        <button style="float: left; border: solid black; margin: 5%;" type="button">Back to home</button>
+    <form action="/" method="get">
+        <button style="float: left; border: solid black; margin: 5%;">Back to home</button>
     </form> 
-
 </body>
 </html>
