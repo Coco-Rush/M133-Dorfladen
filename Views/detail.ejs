@@ -21,7 +21,7 @@
         </ul>
         <form action="/apply" method="post">
             <input type="number" name="productID" value="<%= product.id %>" hidden>
-            <input type="number" name="amount" placeholder="0" required min="1">
+            <input type="number" name="amount" placeholder="0" required min="1" style="margin-left:10px;">
             <button>Add to Cart</button>
         </form>
         <form action="/home" method="get">
