@@ -4,9 +4,38 @@
     <%- await include (Deno.cwd() + '/Views/head.ejs'); %>
 </head>
 <body>
-    
+    <h1>Shopping Cart</h1><br><br>
+    <fieldset class="container">
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>how many in total</th>
+                <th>Price for one</th>
+                <th>Price in total</th>
+            </tr>
+            <% let totalprice = 0; %> 
+            <% for(let i = 0;i<list.length;i++) { %>
+                <tr>
+                    <td><%= list[i].productName %></td>
+                    <td><%= amount[i] %></td>
+                    <td><%= list[i].specialOffer %></td>
+                    <td><%= list[i].specialOffer * amount[i] %></td>
+                    <% totalprice += list[i].specialOffer * amount[i] %> 
+                </tr>
+                <% } %>
+                <tr>
+                    <th>Total Price:</th>
+                    <td></td>
+                    <td> In Schweizer Franken</td>
+                    <th><%= totalprice %> </th>
+                </tr>
+        </table>
+    </fieldset>
 <form action="/" method="get">
-    <button style="float: right; border: solid black; margin: 5%;">Back to home</button>
+    <button style="float: left; border: solid black; margin: 5%;">Back to home</button>
+</form>
+<form action="/" method="get">
+    <button style="float: right; border: solid black; margin: 5%;">Continue to Pay</button>
 </form>
 </body>
 </html>

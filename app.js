@@ -4,7 +4,7 @@ import {Bookings} from "./bookingDb.js";
 
 const productlist = JSON.parse(Deno.readTextFileSync(Deno.cwd() + "/assets/products.json"));
 const path_products = Deno.cwd() + "/assets/products.json";
-let Usercookies = 0;
+let Usercookies = [];
 
 const app = new Application();
 const router = new Router();
@@ -30,21 +30,49 @@ router.post('/home', async (ctx) => {
 
     const id = body.get("productID");
     const amount = body.get("amount");
+    for(let i = 0;i<productlist.length;i++){
+        if(i == id){
+            console.log("is the same");
+            ctx.cookies.set("ID"+id, amount);
+        }
+        else {
+            console.log("is not");
+        }
+    }
+    if(id == 10){
+        ctx.cookies.set("ID010", amount);
+    }
     console.log(id);
     console.log(amount);
-    ctx.cookies.set("ID", id);
-    ctx.cookies.set("AMOUNT", amount);
+    //console.log("Cookie content of "+id+": "+ctx.cookies.get("ID"));
+    //ctx.cookies.set("ID", id);
     console.log("\nUsercookies have been applied");
-    console.log("Cookie content of "+id+": "+ctx.cookies.get("ID"));
-    console.log("Cookie content of "+amount+": "+ctx.cookies.get("AMOUNT"));
+    //console.log("Cookie content of "+id+": "+ctx.cookies.get("ID"));
     
     ctx.response.redirect("http://localhost:8000/");
 });
 
 router.get('/shoppingCart', async (ctx) => {
+
     console.log("shoppingCart loaded\n");
-    console.log("Cookie content"+ctx.cookies.get("ID"));
-    ctx.response.redirect("http://localhost:8000/");
+
+    for(let i = 0;i<productlist.length;i++){
+        console.log("Produkt mit der ID: "+productlist[i].id+" ("+productlist[i].productName+") hat soviel Menge: "+ctx.cookies.get("ID"+productlist[i].id));
+        Usercookies.push(ctx.cookies.get("ID"+productlist[i].id));
+    }
+
+    let path = Deno.cwd() + "/Views/shoppingCart.ejs";
+
+    let body = await renderFileToString(path,
+        {
+            list:productlist,
+            amount:Usercookies
+        }
+    );
+
+    ctx.response.body = body;
+    
+    //ctx.response.redirect("http://localhost:8000/");
 });
 
 router.get('/detail/:id', async (ctx) => {
