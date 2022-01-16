@@ -4,7 +4,9 @@
     <%- await include (Deno.cwd() + '/Views/head.ejs'); %> 
     <style>
         input{
-            border-inline: 40px;
+            margin-right: 40px;
+            border-radius: 4px;
+            float: right;
         }
     </style> 
 </head>
@@ -12,9 +14,9 @@
     <h1>Bezahlen</h1>
     <fieldset class="container">
         <form action="/thankyou" method="post">
-            <label for="username">Benutzername:</label>&#9;<input type="text" name="username" required><br>
-            <label for="password">Passwort:</label>&#9;<input type="password" name="password" required><br>
-            <label for="mail">E-mail Adresse:</label>&#9;<input type="email" name="mail-adress" required><br><br>
+            <label for="username">Benutzername:</label><input type="text" name="username" required><br>
+            <label for="password">Passwort:</label><input type="password" name="password" required><br>
+            <label for="mail">E-mail Adresse:</label><input type="email" name="mail-adress" required><br><br>
             <p style="font-style:bold;">Preis: <%= price %> CHF</p>
             <button type="submit" style="float: right;">Kaufen</button>
         </form>
