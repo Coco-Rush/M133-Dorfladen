@@ -7,7 +7,7 @@
     <h1><%= product.productName %> </h1>
     <%- await include (Deno.cwd() + '/Views/shopCartBtn.ejs'); %>
     <fieldset class="container">
-        <img src="<%= Deno.cwd() + '/assets/' + product.imageName; %>" style="text-align: center;" width="250" height="250"> 
+        <img src="/assets/<%= product.imageName %>" style="text-align: center;border:solid black;" width="250" height="250"> 
         <ul>
             <li>
                <p style="font: bold;color:red;">ANGEBOT!: <%= product.specialOffer %>CHF --Nur noch für 2 Tage erhältlich!</p>

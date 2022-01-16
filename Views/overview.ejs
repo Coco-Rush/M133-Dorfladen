@@ -4,7 +4,7 @@
     <%- await include (Deno.cwd() + '/Views/head.ejs'); %>
     <style>
         .columns {
-            border: 1px black solid;
+            border:solid black;
             background-color: white;
             padding: 0px;
             column-count: 3;      
@@ -16,11 +16,11 @@
 <body>
     <h1>Dorfladen BBZW</h1>
     <%- await include (Deno.cwd() + '/Views/shopCartBtn.ejs'); %>
-        <div class="columns"class="container">
+        <div class="columns">
             <% for(let i=0;i<list.length;i++){ %><br><br>
                 <form action="/detail/<%= list[i].id %>" method="get">
                     <button type="submit">
-                        <img src="assets/<%= list[i].imageName %>" width="200" height="200"><br>
+                        <img src="/assets/<%= list[i].imageName %>" width="210" height="210"><br>
                         <p><%= list[i].productName %></p><br><br>
                     </button>
                 </form>

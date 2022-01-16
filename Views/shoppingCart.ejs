@@ -8,28 +8,28 @@
     <fieldset class="container">
         <table>
             <tr>
-                <th>Produkt</th>
-                <th>Anzahl</th>
-                <th>Einzelpreis</th>
-                <th>Gesamtpreis</th>
+                <th>Produkt&nbsp;</th>
+                <th>Anzahl&nbsp;</th>
+                <th>Einzelpreis&nbsp;</th>
+                <th>Gesamtpreis&nbsp;</th>
                 <th></th>
                 <th></th>
             </tr>
             <% let totalprice = 0; %> 
             <% for(let i = 0;i<list.length;i++) { %>
-                <tr>
+                <tr style="text-align: center;">
                     <% if(amount[i] != 0 ){ %>
                         <td><%= list[i].productName %></td>
                         <td><%= amount[i] %></td>
-                        <td><%= list[i].specialOffer %></td>
-                        <td><%= (list[i].specialOffer * amount[i]).toFixed(2); %></td>
+                        <td><%= (list[i].specialOffer).toFixed(2) %> CHF</td>
+                        <td><%= (list[i].specialOffer * amount[i]).toFixed(2); %> CHF</td>
                         <% totalprice += list[i].specialOffer * amount[i] %>
                         <td> 
                         <form action="/add/<%= list[i].id %>" method="post">
                             <button name="plus">+1</button>
                         </form>
-                    </td>
-                    <td>
+                        </td>
+                        <td>
                         <form action="/remove/<%= list[i].id %>" method="post">
                         <button name="minus">-1</button>
                     </form>
@@ -39,8 +39,8 @@
                 <% } %>
                 <tr>
                     <th>Total Price:</th>
-                    <td>In</td>
-                    <td>Schweizer</td>
+                    <td></td>
+                    <td>In Schweizer</td>
                     <td>Franken</td>
                     <td></td>
                     <% totalprice = totalprice.toFixed(2) %> 

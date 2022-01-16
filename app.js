@@ -1,5 +1,6 @@
-import {Application, Context, Router} from 'https://deno.land/x/oak@v6.3.1/mod.ts';
+import {Application, Context, Router, send} from 'https://deno.land/x/oak@v6.3.1/mod.ts';
 import {renderFileToString} from "https://deno.land/x/dejs@0.9.3/mod.ts";
+
 
 const productlist = JSON.parse(Deno.readTextFileSync(Deno.cwd() + "/assets/products.json"));
 const path_products = Deno.cwd() + "/assets/products.json";
@@ -140,7 +141,7 @@ router.post('/payfor', async (ctx) => {
 
     console.log(total);
     if (total == '0.00'){
-        //window.alert("Es wurden keine Produkte ausgewählt.");
+        //window.alert("Es wurden keine Produkte ausgewählt."); -> window.alert geht nicht?
         ctx.response.redirect("http://localhost:8000/home");
     } else {
         const go = await renderFileToString(path,
@@ -176,5 +177,10 @@ app.addEventListener('listen', () => {
 
 app.use(router.routes());
 app.use(router.allowedMethods());
+app.use(async (context) => {
+    await send(context, context.request.url.pathname, {
+        root: `${Deno.cwd()}`,
+    });
+});
 
 await app.listen({port:8000});
