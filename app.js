@@ -137,12 +137,19 @@ router.post('/payfor', async (ctx) => {
     let path = Deno.cwd() + "/Views/Pay.ejs";
     const body = await ctx.request.body().value;
     const total = body.get("totalprice");
-    const here = await renderFileToString(path,
-        {
-            price:total
-        }
-    );
-    ctx.response.body = here;
+
+    console.log(total);
+    if (total == '0.00'){
+        //window.alert("Es wurden keine Produkte ausgewählt.");
+        ctx.response.redirect("http://localhost:8000/home");
+    } else {
+        const go = await renderFileToString(path,
+            {
+                price:total
+            }
+        );
+        ctx.response.body = go;
+    }
 });
 
 router.post('/thankyou', async (ctx) => {
