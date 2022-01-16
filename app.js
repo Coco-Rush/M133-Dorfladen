@@ -11,6 +11,9 @@ const router = new Router();
 router.get('/',async (ctx)=> {
 
     let path = Deno.cwd() + "/Views/overview.ejs";
+    for(let i=0;i<10;i++){
+        ctx.cookies.set("ID"+productlist[i].id,'0');
+    }
 
     let body = await renderFileToString(path,
         {
@@ -20,6 +23,18 @@ router.get('/',async (ctx)=> {
 
     ctx.response.body = body;
 });
+
+router.get('/home', async (ctx) => {
+    let path = Deno.cwd() + "/Views/overview.ejs";
+
+    let body = await renderFileToString(path,
+        {
+            list:productlist
+        }
+    );
+
+    ctx.response.body = body;
+})
 
 router.get('/detail/:id', async (ctx) => {
 
@@ -49,6 +64,37 @@ router.get('/detail/:id', async (ctx) => {
 
 });
 
+router.post('/add/:id', async (ctx) => {
+    let path = Deno.cwd() + "/Views/shoppingCart.ejs";
+    let id = ctx.params.id;
+    let one = 1;
+    one += parseInt(ctx.cookies.get("ID"+id));
+    ctx.cookies.set("ID"+id, one);
+    console.log(ctx.cookies.get("ID"+id));
+
+    Usercookies = [];
+    for(let i = 0;i<productlist.length;i++){
+        console.log("Produkt mit der ID: "+productlist[i].id+" ("+productlist[i].productName+") hat soviel Menge: "+ctx.cookies.get("ID"+productlist[i].id));
+        Usercookies.push(ctx.cookies.get("ID"+productlist[i].id));
+    }
+    ctx.response.redirect("http://localhost:8000/shoppingCart");
+});
+
+router.post('/remove/:id', async (ctx) => {
+    let path = Deno.cwd() + "/Views/shoppingCart.ejs";
+    let id = ctx.params.id;
+    console.log(ctx.cookies.get("ID"+id));
+    if(!(ctx.cookies.get("ID"+id)==0)||ctx.cookies.get("ID"+id)==1){
+        let one = ctx.cookies.get("ID"+id) - 1;
+        ctx.cookies.set("ID"+id, one);
+    }
+    if(ctx.cookies.get("ID"+id)==1){
+        ctx.cookies.set("ID"+id,'0');
+    }
+    console.log(ctx.cookies.get("ID"+id));
+    ctx.response.redirect("http://localhost:8000/shoppingCart");
+});
+
 router.get('/shoppingCart', async (ctx) => {
 
     console.log("shoppingCart loaded\n");
@@ -57,9 +103,7 @@ router.get('/shoppingCart', async (ctx) => {
         console.log("Produkt mit der ID: "+productlist[i].id+" ("+productlist[i].productName+") hat soviel Menge: "+ctx.cookies.get("ID"+productlist[i].id));
         Usercookies.push(ctx.cookies.get("ID"+productlist[i].id));
     }
-
     let path = Deno.cwd() + "/Views/shoppingCart.ejs";
-
     let body = await renderFileToString(path,
         {
             list:productlist,
@@ -68,11 +112,9 @@ router.get('/shoppingCart', async (ctx) => {
     );
 
     ctx.response.body = body;
-    
-    //ctx.response.redirect("http://localhost:8000/");
 });
 
-router.post('/home', async (ctx) => {
+router.post('/apply', async (ctx) => {
 
     let path = Deno.cwd() + "/Views/overview.ejs";
     const body = await ctx.request.body().value;
@@ -88,7 +130,7 @@ router.post('/home', async (ctx) => {
     console.log(id);
     console.log(amount);
     console.log("\nUsercookies have been applied");
-    ctx.response.redirect("http://localhost:8000/");
+    ctx.response.redirect("http://localhost:8000/home");
 });
 
 router.post('/payfor', async (ctx) => {

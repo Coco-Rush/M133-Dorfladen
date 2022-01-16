@@ -8,10 +8,12 @@
     <fieldset class="container">
         <table>
             <tr>
-                <th>Product</th>
-                <th>how many in total</th>
-                <th>Price for one</th>
-                <th>Price in total</th>
+                <th>Produkt</th>
+                <th>Anzahl</th>
+                <th>Einzelpreis</th>
+                <th>Gesamtpreis</th>
+                <th></th>
+                <th></th>
             </tr>
             <% let totalprice = 0; %> 
             <% for(let i = 0;i<list.length;i++) { %>
@@ -20,19 +22,31 @@
                     <td><%= amount[i] %></td>
                     <td><%= list[i].specialOffer %></td>
                     <td><%= (list[i].specialOffer * amount[i]).toFixed(2); %></td>
-                    <% totalprice += list[i].specialOffer * amount[i] %> 
+                    <% totalprice += list[i].specialOffer * amount[i] %>
+                    <td>
+                        <form action="/add/<%= list[i].id %>" method="post">
+                            <button name="plus">+1</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/remove/<%= list[i].id %>" method="post">
+                        <button name="minus">-1</button>
+                    </form>
+                </td>
                 </tr>
                 <% } %>
                 <tr>
                     <th>Total Price:</th>
-                    <td>In Schweizer Franken</td>
+                    <td>In</td>
+                    <td>Schweizer</td>
+                    <td>Franken</td>
                     <td></td>
                     <% totalprice = totalprice.toFixed(2) %> 
                     <th><%= totalprice %> </th>
                 </tr>
         </table>
     </fieldset>
-<form action="/" method="get">
+<form action="/home" method="get">
     <button style="float: left;">Zurück zur Startseite</button>
 </form>
 <form action="/payfor" method="post">

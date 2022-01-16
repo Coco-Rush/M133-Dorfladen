@@ -19,12 +19,12 @@
                 <%= product.description %>
             </li>
         </ul>
-        <form action="/home" method="post">
+        <form action="/apply" method="post">
             <input type="number" name="productID" value="<%= product.id %>" hidden>
-            <input type="number" name="amount" placeholder="0" required value="1">
+            <input type="number" name="amount" placeholder="0" required min="1">
             <button>Add to Cart</button>
         </form>
-        <form action="/" method="get">
+        <form action="/home" method="get">
             <button style="float: left;">Back to home</button>
         </form>
     </fieldset>
