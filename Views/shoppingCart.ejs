@@ -18,12 +18,13 @@
             <% let totalprice = 0; %> 
             <% for(let i = 0;i<list.length;i++) { %>
                 <tr>
-                    <td><%= list[i].productName %></td>
-                    <td><%= amount[i] %></td>
-                    <td><%= list[i].specialOffer %></td>
-                    <td><%= (list[i].specialOffer * amount[i]).toFixed(2); %></td>
-                    <% totalprice += list[i].specialOffer * amount[i] %>
-                    <td>
+                    <% if(amount[i] != 0 ){ %>
+                        <td><%= list[i].productName %></td>
+                        <td><%= amount[i] %></td>
+                        <td><%= list[i].specialOffer %></td>
+                        <td><%= (list[i].specialOffer * amount[i]).toFixed(2); %></td>
+                        <% totalprice += list[i].specialOffer * amount[i] %>
+                        <td> 
                         <form action="/add/<%= list[i].id %>" method="post">
                             <button name="plus">+1</button>
                         </form>
@@ -34,6 +35,7 @@
                     </form>
                 </td>
                 </tr>
+                    <% } %>
                 <% } %>
                 <tr>
                     <th>Total Price:</th>

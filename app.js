@@ -154,13 +154,12 @@ router.post('/thankyou', async (ctx) => {
     const pass = body.get("password");
     const email = body.get("mail-adress");
 
-    let now = await renderFileToString(path,
+    let go = await renderFileToString(path,
         {
-            name:user,
-            mail:email
+            name:user
         }
     );
-    ctx.response.body = now;
+    ctx.response.body = go;
 });
 
 
