@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap-reboot.css">
-    <script src="bootstrap/js/bootstrap.js"></script>
-    <title>Document</title>
+    <%- await include (Deno.cwd() + '/Views/head.ejs'); %>
     <style>
         .columns {
             border: 1px black solid;
+            background-color: white;
             padding: 15px;
             -webkit-column-count: 3;
             -moz-column-count: 3;
@@ -20,12 +17,11 @@
             -moz-column-rule: 1px solid lightgrey;
             column-rule: 1px solid lightgrey;
         }
-    </style>
+    </style>   
 </head>
 <body>
-    
-    <fieldset>
-        <div class="columns">
+    <h1>Dorfladen BBZW</h1><br><br>
+        <div class="columns"class="container">
             <% for(let i=0;i<list.length;i++){ %><br><br>
                 <form action="/detail/<%= list[i].id %>" method="get">
                     <button style="float: center; border: solid black; margin: 5%;" type="submit">
@@ -35,7 +31,6 @@
                 </form>
                 <% } %> 
         </div>  
-    </fieldset>
 
 </body>
 </html>

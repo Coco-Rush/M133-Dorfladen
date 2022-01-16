@@ -11,9 +11,6 @@ const router = new Router();
 router.get('/',async (ctx)=> {
 
     let path = Deno.cwd() + "/Views/overview.ejs";
-    console.log(path);
-    console.log(path_products);
-    console.log(productlist);
 
     let body = await renderFileToString(path,
         {

@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap-reboot.css">
-    <script src="bootstrap/js/bootstrap.js"></script>
-    <title>Document</title>
+    <%- await include (Deno.cwd() + '/Views/head.ejs'); %>
 </head>
 <body>
+    <% let path = Deno.cwd() + '/assets/' + product.imageName; %> 
+    <% console.log(path) %> 
     <h1><%= product.productName %> </h1><br><br>
-    <img src="/assets/<%= product.imageName %>" width="150" height="150">
-    <ul>
-        <li>
-           Produkt: <%= product.productName %>
-        </li>
-        <li>
-           <p style="font: bold;color:red;">ANGEBOT!: <%= product.specialOffer %>CHF --Nur noch für 2 Tage erhältlich!</p>
-        </li>
-        <li>
-           Normaler Preis: <del><%= product.normalPrice %></del>
-        </li>
-        <li>
-            <%= product.description %>
-        </li>
-    </ul>
-    <form action="/" method="get">
-        <button style="float: left; border: solid black; margin: 5%;">Back to home</button>
-    </form> 
+    <fieldset class="container">
+        <br>
+        <img src="<%= path %>" width="250" height="250"> 
+        <ul>
+            <li>
+               <p style="font: bold;color:red;">ANGEBOT!: <%= product.specialOffer %>CHF --Nur noch für 2 Tage erhältlich!</p>
+            </li>
+            <li>
+               Normaler Preis: <del><%= product.normalPrice %></del>
+            </li>
+            <li>
+                <%= product.description %>
+            </li>
+        </ul>
+        <form action="/" method="get">
+            <button style="float: left; border: solid black; margin: 5%;">Back to home</button>
+        </form>
+    </fieldset>
+     
 </body>
 </html>
