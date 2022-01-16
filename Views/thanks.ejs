@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- await include (Deno.cwd() + '/Views/head.ejs'); %> 
+    <style>
+        input{
+            border-inline: 40px;
+        }
+    </style> 
+</head>
+<body>
+    <h1>Auf Wiedersehen, <%= name %>!</h1>
+    <fieldset class="container">
+        <p>Danke sehr für deinen Einkauf.<br>
+        Eine Mail an <%= mail %> wird bald in deiner Inbox ankommen!</p>
+        <form action="/" method="get">
+            <button>Zur Startseite</button>
+        </form>
+    </fieldset>
+</body>
+</html>

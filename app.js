@@ -21,51 +21,6 @@ router.get('/',async (ctx)=> {
     ctx.response.body = body;
 });
 
-router.post('/home', async (ctx) => {
-
-    let path = Deno.cwd() + "/Views/overview.ejs";
-    const body = await ctx.request.body().value;
-    console.log(body);
-
-    const id = body.get("productID");
-    const amount = body.get("amount");
-    for(let i = 0;i<productlist.length;i++){
-        if(i == id){
-            ctx.cookies.set("ID"+id, amount);
-        }
-    }
-    if(id == 10){
-        ctx.cookies.set("ID010", amount);
-    }
-    console.log(id);
-    console.log(amount);
-    console.log("\nUsercookies have been applied");
-    ctx.response.redirect("http://localhost:8000/");
-});
-
-router.get('/shoppingCart', async (ctx) => {
-
-    console.log("shoppingCart loaded\n");
-    Usercookies = [];
-    for(let i = 0;i<productlist.length;i++){
-        console.log("Produkt mit der ID: "+productlist[i].id+" ("+productlist[i].productName+") hat soviel Menge: "+ctx.cookies.get("ID"+productlist[i].id));
-        Usercookies.push(ctx.cookies.get("ID"+productlist[i].id));
-    }
-
-    let path = Deno.cwd() + "/Views/shoppingCart.ejs";
-
-    let body = await renderFileToString(path,
-        {
-            list:productlist,
-            amount:Usercookies
-        }
-    );
-
-    ctx.response.body = body;
-    
-    //ctx.response.redirect("http://localhost:8000/");
-});
-
 router.get('/detail/:id', async (ctx) => {
 
     let path = Deno.cwd() + "/Views/detail.ejs";
@@ -94,8 +49,85 @@ router.get('/detail/:id', async (ctx) => {
 
 });
 
-router.post('/pay', async (ctx) => {
+router.get('/shoppingCart', async (ctx) => {
 
+    console.log("shoppingCart loaded\n");
+    Usercookies = [];
+    for(let i = 0;i<productlist.length;i++){
+        console.log("Produkt mit der ID: "+productlist[i].id+" ("+productlist[i].productName+") hat soviel Menge: "+ctx.cookies.get("ID"+productlist[i].id));
+        Usercookies.push(ctx.cookies.get("ID"+productlist[i].id));
+    }
+
+    let path = Deno.cwd() + "/Views/shoppingCart.ejs";
+
+    let body = await renderFileToString(path,
+        {
+            list:productlist,
+            amount:Usercookies
+        }
+    );
+
+    ctx.response.body = body;
+    
+    //ctx.response.redirect("http://localhost:8000/");
+});
+
+router.post('/home', async (ctx) => {
+
+    let path = Deno.cwd() + "/Views/overview.ejs";
+    const body = await ctx.request.body().value;
+    console.log(body);
+
+    const id = body.get("productID");
+    const amount = body.get("amount");
+    for(let i = 0;i<11;i++){
+        if(i == id){
+            ctx.cookies.set("ID"+id, amount);
+        }
+    }
+    console.log(id);
+    console.log(amount);
+    console.log("\nUsercookies have been applied");
+    ctx.response.redirect("http://localhost:8000/");
+});
+
+router.post('/payfor', async (ctx) => {
+    let path = Deno.cwd() + "/Views/Pay.ejs";
+    const body = await ctx.request.body().value;
+    const total = body.get("totalprice");
+    const here = await renderFileToString(path,
+        {
+            price:total
+        }
+    );
+    ctx.response.body = here;
+});
+
+router.post('/thankyou', async (ctx) => {
+
+    let path = Deno.cwd() + "/Views/thanks.ejs";
+
+    /*
+    const zero = 0;
+    for(let i = 0;i<11;i++){
+        if(i == productlist[i].id){
+            ctx.cookies.set("ID"+productlist[i].id, zero);
+        }
+    }*/
+    console.log("wworks here?");
+    const body = await ctx.request.body().value;
+
+    const user = body.get("username");
+    const pass = body.get("password");
+    const email = body.get("mail-adress");
+
+    let now = await renderFileToString(path,
+        {
+            name:user,
+            mail:email
+        }
+    );
+    ctx.response.body = now;
 });
 
 

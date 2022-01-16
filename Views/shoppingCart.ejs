@@ -27,14 +27,16 @@
                     <th>Total Price:</th>
                     <td>In Schweizer Franken</td>
                     <td></td>
-                    <th><%= totalprice.toFixed(2) %> </th>
+                    <% totalprice = totalprice.toFixed(2) %> 
+                    <th><%= totalprice %> </th>
                 </tr>
         </table>
     </fieldset>
 <form action="/" method="get">
     <button style="float: left;">Zurück zur Startseite</button>
 </form>
-<form action="/pay" method="post">
+<form action="/payfor" method="post">
+    <input type="number" name="totalprice" hidden value="<%= totalprice %>">
     <button style="float: right;">Weiter zum Kaufbildschirm</button>
 </form>
 </body>
