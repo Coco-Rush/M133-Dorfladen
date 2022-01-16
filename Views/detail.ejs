@@ -21,8 +21,13 @@
                 <%= product.description %>
             </li>
         </ul>
+        <form action="/home" method="post">
+            <input type="number" name="productID" value="<%= product.id %>" hidden>
+            <input type="number" name="amount" placeholder="0" required value="1">
+            <button style="border: solid black; margin: 5%;">Add to Cart</button>
+        </form>
         <form action="/" method="get">
-            <button style="float: left; border: solid black; margin: 5%;">Back to home</button>
+            <button style="float: right; border: solid black; margin: 5%;">Back to home</button>
         </form>
     </fieldset>
      

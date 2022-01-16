@@ -3,7 +3,8 @@ import {renderFileToString} from "https://deno.land/x/dejs@0.9.3/mod.ts";
 import {Bookings} from "./bookingDb.js";
 
 const productlist = JSON.parse(Deno.readTextFileSync(Deno.cwd() + "/assets/products.json"));
-const path_products = Deno.cwd() + "/assets/products.json"; 
+const path_products = Deno.cwd() + "/assets/products.json";
+let Usercookies = 0;
 
 const app = new Application();
 const router = new Router();
@@ -21,19 +22,29 @@ router.get('/',async (ctx)=> {
     ctx.response.body = body;
 });
 
-router.get('/home', async (ctx) => {
+router.post('/home', async (ctx) => {
+
     let path = Deno.cwd() + "/Views/overview.ejs";
-    console.log(path);
-    console.log(path_products);
-    console.log(productlist);
+    const body = await ctx.request.body().value;
+    console.log(body);
 
-    let body = await renderFileToString(path,
-        {
-            list:productlist
-        }
-    );
+    const id = body.get("productID");
+    const amount = body.get("amount");
+    console.log(id);
+    console.log(amount);
+    ctx.cookies.set("ID", id);
+    ctx.cookies.set("AMOUNT", amount);
+    console.log("\nUsercookies have been applied");
+    console.log("Cookie content of "+id+": "+ctx.cookies.get("ID"));
+    console.log("Cookie content of "+amount+": "+ctx.cookies.get("AMOUNT"));
+    
+    ctx.response.redirect("http://localhost:8000/");
+});
 
-    ctx.response.body = body;
+router.get('/shoppingCart', async (ctx) => {
+    console.log("shoppingCart loaded\n");
+    console.log("Cookie content"+ctx.cookies.get("ID"));
+    ctx.response.redirect("http://localhost:8000/");
 });
 
 router.get('/detail/:id', async (ctx) => {

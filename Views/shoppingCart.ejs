@@ -1,20 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap-reboot.css">
-    <script src="bootstrap/js/bootstrap.js"></script>
-    <title>Document</title>
+    <%- await include (Deno.cwd() + '/Views/head.ejs'); %>
 </head>
 <body>
     
-    <fieldset>
-        <% for(let i=0;i<list.length;i++){ %><br><br>
-            <img src="..\assets\<%= list[i].imageName %>" width="150" height="150"><br>
-            <p><%= list[i].productName %></p><br><br>
-            <% } %> 
-    </fieldset>
-
+<form action="/" method="get">
+    <button style="float: right; border: solid black; margin: 5%;">Back to home</button>
+</form>
 </body>
 </html>
