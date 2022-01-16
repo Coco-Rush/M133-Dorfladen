@@ -106,15 +106,6 @@ router.post('/payfor', async (ctx) => {
 router.post('/thankyou', async (ctx) => {
 
     let path = Deno.cwd() + "/Views/thanks.ejs";
-
-    /*
-    const zero = 0;
-    for(let i = 0;i<11;i++){
-        if(i == productlist[i].id){
-            ctx.cookies.set("ID"+productlist[i].id, zero);
-        }
-    }*/
-    console.log("wworks here?");
     const body = await ctx.request.body().value;
 
     const user = body.get("username");
