@@ -6,32 +6,26 @@
         .columns {
             border: 1px black solid;
             background-color: white;
-            padding: 20pxpx;
-            -webkit-column-count: 3;
-            -moz-column-count: 3;
-            column-count: 3;
-            -webkit-column-gap: 40px;
-            -moz-column-gap: 40px;
-            column-gap: 30px;
-            -webkit-column-rule: 1px solid lightgrey;
-            -moz-column-rule: 1px solid lightgrey;
+            padding: 0px;
+            column-count: 3;      
+            column-gap: 0px;
             column-rule: 1px solid lightgrey;
         }
     </style>   
 </head>
 <body>
-    <h1>Dorfladen BBZW</h1><br><br>
+    <h1>Dorfladen BBZW</h1>
     <%- await include (Deno.cwd() + '/Views/shopCartBtn.ejs'); %>
         <div class="columns"class="container">
             <% for(let i=0;i<list.length;i++){ %><br><br>
                 <form action="/detail/<%= list[i].id %>" method="get">
-                    <button style=" border: solid black; margin: 5%;" type="submit">
+                    <button type="submit">
                         <img src="assets/<%= list[i].imageName %>" width="200" height="200"><br>
                         <p><%= list[i].productName %></p><br><br>
                     </button>
                 </form>
                 <% } %> 
         </div>  
-
+<br><br>
 </body>
 </html>

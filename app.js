@@ -95,7 +95,6 @@ router.get('/detail/:id', async (ctx) => {
 
     let body = await renderFileToString(path,
         {
-            title:"Helden",
             product:productById
         }
     );

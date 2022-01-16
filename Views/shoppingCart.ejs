@@ -19,23 +19,23 @@
                     <td><%= list[i].productName %></td>
                     <td><%= amount[i] %></td>
                     <td><%= list[i].specialOffer %></td>
-                    <td><%= list[i].specialOffer * amount[i] %></td>
+                    <td><%= (list[i].specialOffer * amount[i]).toFixed(2); %></td>
                     <% totalprice += list[i].specialOffer * amount[i] %> 
                 </tr>
                 <% } %>
                 <tr>
                     <th>Total Price:</th>
+                    <td>In Schweizer Franken</td>
                     <td></td>
-                    <td> In Schweizer Franken</td>
-                    <th><%= totalprice %> </th>
+                    <th><%= totalprice.toFixed(2) %> </th>
                 </tr>
         </table>
     </fieldset>
 <form action="/" method="get">
-    <button style="float: left; border: solid black; margin: 5%;">Back to home</button>
+    <button style="float: left;">Back to home</button>
 </form>
 <form action="/" method="get">
-    <button style="float: right; border: solid black; margin: 5%;">Continue to Pay</button>
+    <button style="float: right;">Continue to Pay</button>
 </form>
 </body>
 </html>
